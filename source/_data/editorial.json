@@ -1,0 +1,52 @@
+{
+  "language": "zh-CN",
+  "variant": "factory",
+  "name": "厂务能源网",
+  "shortName": "FactoryEnergy",
+  "description": "面向半导体与精密制造厂务工程师，分享工业节能、动力系统与设备运维的实践经验。",
+  "eyebrow": "半导体厂务与工业节能",
+  "heading": "厂务能效与\n设备运维",
+  "intro": "从洁净室暖通、空压站到循环水系统，梳理厂务工程中的节能机会、运行策略和设备维护方法。",
+  "primary": "浏览技术文章",
+  "secondary": "工程计算器",
+  "image": "factoryenergy-chiller-room.webp",
+  "imageAlt": "厂务冷站内布置整齐的冷水机组和保温管道",
+  "imageCaption": "厂务冷站与输配管路示意",
+  "navLabel": "主导航",
+  "skip": "跳到正文",
+  "articles": "文章归档",
+  "categories": "分类",
+  "about": "关于",
+  "focus": "专题导航",
+  "library": "技术文章",
+  "archive": "查看全部归档",
+  "searchLabel": "搜索文章",
+  "searchPlaceholder": "按标题、设备或主题搜索",
+  "more": "显示全部文章",
+  "less": "收起文章",
+  "empty": "没有匹配的文章，请试试其他关键词。",
+  "results": "{n} 篇匹配文章",
+  "read": "阅读文章",
+  "privacy": "隐私政策",
+  "terms": "服务条款",
+  "related": "Smart Facility 英文站",
+  "relatedUrl": "https://smartfacility.tech/",
+  "legalLabel": "站点链接",
+  "topics": [
+    {
+      "title": "能源效率",
+      "text": "空压系统、循环水、余热回收与节能改造",
+      "url": "/categories/节能技术/"
+    },
+    {
+      "title": "暖通与动力系统",
+      "text": "从洁净室空调到变配电设备的运行要点",
+      "url": "/categories/厂务设备/"
+    },
+    {
+      "title": "厂务运维",
+      "text": "值班记录、日常管理与设备运行经验",
+      "url": "/categories/厂务管理/"
+    }
+  ]
+}
