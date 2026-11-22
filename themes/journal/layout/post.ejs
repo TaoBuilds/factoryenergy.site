@@ -18,7 +18,19 @@ const contents = toc(body, {min_depth: 2, max_depth: 3, class: 'journal-toc', li
     <% for (const category of categories) { %><a href="<%= journalPath(category.path) %>"><%= category.name %></a><% } %>
   </div>
 </header>
-<div class="journal-reading">
+<div class="journal-reading<%= contents ? ' journal-reading--with-toc' : '' %>">
+  <% if (contents) { %>
+  <aside class="journal-article-aside">
+    <details class="journal-toc-card" data-article-toc>
+      <summary class="journal-toc-summary">
+        <span class="journal-toc-icon" aria-hidden="true"></span>
+        <span><%= journal.tocLabel %></span>
+        <span class="journal-toc-chevron" aria-hidden="true"></span>
+      </summary>
+      <nav class="journal-toc-links" aria-label="<%= journal.tocLabel %>"><%- contents %></nav>
+    </details>
+  </aside>
+  <% } %>
   <article class="journal-prose" id="article-container">
     <%- body %>
     <% if (tags.length) { %>
@@ -27,14 +39,6 @@ const contents = toc(body, {min_depth: 2, max_depth: 3, class: 'journal-toc', li
     </nav>
     <% } %>
   </article>
-  <% if (contents) { %>
-  <aside class="journal-article-aside">
-    <details open>
-      <summary><%= journal.tocLabel %></summary>
-      <nav aria-label="<%= journal.tocLabel %>"><%- contents %></nav>
-    </details>
-  </aside>
-  <% } %>
 </div>
 <% if (page.prev || page.next) { %>
 <nav class="journal-neighbors" aria-label="<%= journal.moreArticles %>">

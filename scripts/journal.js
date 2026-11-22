@@ -2,6 +2,21 @@
 
 'use strict';
 
+const {createHash} = require('node:crypto');
+const {readFileSync} = require('node:fs');
+const {join} = require('node:path');
+
+let journalStylesheet;
+
+hexo.extend.filter.register('before_generate', () => {
+  const data = readFileSync(join(hexo.source_dir, 'css', 'editorial.css'));
+  const version = createHash('sha256').update(data).digest('hex').slice(0, 12);
+  journalStylesheet = {path: `css/editorial.${version}.css`, data};
+});
+
+hexo.extend.generator.register('journal-stylesheet', () => journalStylesheet);
+hexo.extend.helper.register('journalStylesheet', () => '/' + journalStylesheet.path);
+
 const simplify = input => String(input || '')
   .replace(/<[^>]+>/g, ' ')
   .replace(/&amp;/g, '&')

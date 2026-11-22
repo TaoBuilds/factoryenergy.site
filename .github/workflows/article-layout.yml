@@ -1,0 +1,58 @@
+name: Validate article layout
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/article-layout.yml'
+      - 'scripts/**'
+      - 'source/css/**'
+      - 'source/js/**'
+      - 'source/_posts/**'
+      - 'tests/article-layout.cjs'
+      - 'themes/journal/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/article-layout.yml'
+      - 'scripts/**'
+      - 'source/css/**'
+      - 'source/js/**'
+      - 'source/_posts/**'
+      - 'tests/article-layout.cjs'
+      - 'themes/journal/**'
+
+permissions:
+  contents: read
+
+jobs:
+  article-layout:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Install Chromium for layout checks
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+          if [ -z "$(fc-list :lang=zh)" ]; then
+            sudo apt-get install -y fonts-noto-cjk
+          fi
+      - name: Check article on mobile and desktop
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public &
+          server_pid=$!
+          trap 'kill $server_pid 2>/dev/null || true' EXIT
+          curl --retry 5 --retry-connrefused --retry-delay 1 -fsS http://127.0.0.1:8765/ -o /dev/null
+          node tests/article-layout.cjs
+      - name: Upload article screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: factoryenergy-article-layout
+          path: test-artifacts/article/
+          if-no-files-found: ignore
