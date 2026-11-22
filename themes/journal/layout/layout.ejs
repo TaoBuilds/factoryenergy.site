@@ -27,9 +27,10 @@ const canonical = new URL(pagePath, config.url).href;
   <meta property="og:image:alt" content="<%= journal.imageAlt %>">
   <% if (page.__post) { %><meta property="article:published_time" content="<%= page.date.toISOString() %>"><% } %>
   <link rel="icon" href="/img/favicon.ico">
-  <link rel="stylesheet" href="/css/editorial.css">
+  <link rel="stylesheet" href="<%= journalStylesheet() %>">
   <meta name="google-adsense-account" content="ca-pub-7465624411296700">
   <% if (home) { %><script defer src="/js/editorial-search.js"></script><% } %>
+  <% if (page.__post) { %><script defer src="/js/article-toc.js"></script><% } %>
   <% if (pagePath === '/search/') { %><script defer src="/js/journal-search.js"></script><% } %>
 </head>
 <body class="editorial editorial--<%= journal.variant %>">
@@ -48,7 +49,7 @@ const canonical = new URL(pagePath, config.url).href;
     </div>
   </header>
 
-  <main id="main-content" class="journal-wrap <%= home ? 'journal-home' : 'journal-inner' %>"><%- body %></main>
+  <main id="main-content" class="journal-wrap <%= home ? 'journal-home' : page.__post ? 'journal-inner journal-inner--article' : 'journal-inner' %>"><%- body %></main>
 
   <footer class="journal-footer">
     <div class="journal-wrap journal-footer__inner">
