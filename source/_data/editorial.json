@@ -48,5 +48,23 @@
       "text": "值班记录、日常管理与设备运行经验",
       "url": "/categories/厂务管理/"
     }
-  ]
+  ],
+  "homeLabel": "首页",
+  "breadcrumbLabel": "当前位置",
+  "tagsLabel": "标签",
+  "paginationLabel": "文章分页",
+  "previousPage": "上一页",
+  "nextPage": "下一页",
+  "pageNumber": "第 {n} 页 / 共 {total} 页",
+  "tocLabel": "本页目录",
+  "moreArticles": "继续阅读",
+  "newerArticle": "较新文章",
+  "olderArticle": "较早文章",
+  "articleCount": "{n} 篇文章",
+  "searchButton": "搜索",
+  "fullSearchPlaceholder": "输入设备名称、工艺或文章关键词",
+  "searchPending": "正在查找文章…",
+  "searchError": "文章索引暂时不可用，请稍后重试。",
+  "notFound": "找不到此页面",
+  "notFoundHelp": "你可以从文章归档或搜索继续查找厂务技术内容。"
 }

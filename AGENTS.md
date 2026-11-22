@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository is a Hexo static site. Root config lives in [`_config.yml`](/home/zhanghaitaonas/factoryenergy.site/_config.yml) and theme-specific settings live in [`_config.butterfly.yml`](/home/zhanghaitaonas/factoryenergy.site/_config.butterfly.yml). Site content is under `source/`: long-form posts in `source/_posts/`, standalone pages such as `about`, `privacy`, and `terms` in `source/*/index.md`, and template overrides in `source/_data/`. Small build-time extensions belong in `scripts/`. `scaffolds/` defines templates for new posts and pages.
+This repository is a Hexo static site. Root config lives in [`_config.yml`](/home/zhanghaitaonas/factoryenergy.site/_config.yml) and the active journal theme lives in `themes/journal/`. Site content is under `source/`: long-form posts in `source/_posts/`, standalone pages such as `about`, `privacy`, and `terms` in `source/*/index.md`, and site labels in `source/_data/editorial.json`. Small build-time extensions belong in `scripts/`. `scaffolds/` defines templates for new posts and pages.
 
 ## Build, Test, and Development Commands
 Install dependencies with `npm install`.
@@ -11,7 +11,7 @@ Clean generated artifacts with `npm run clean`.
 Deploy with `npm run deploy` only after verifying `deploy.repo` in `_config.yml`.
 
 ## Coding Style & Naming Conventions
-Use 2-space indentation in YAML, JSON, and EJS to match the current files. Write Markdown with clear front matter and kebab-case filenames, for example `factory-rooftop-solar-2026.md`. Keep page directories path-based, such as `source/about/index.md`. Prefer concise Chinese copy for user-facing pages unless a file is explicitly English. Avoid adding theme customizations directly under `themes/`; use `source/_data/` or root config overrides first.
+Use 2-space indentation in YAML, JSON, and EJS to match the current files. Write Markdown with clear front matter and kebab-case filenames, for example `factory-rooftop-solar-2026.md`. Keep page directories path-based, such as `source/about/index.md`. Prefer concise Chinese copy for user-facing pages unless a file is explicitly English. Keep the active layouts in `themes/journal/layout/` and shared design styles in `source/css/editorial.css`.
 
 ## Testing Guidelines
 There is no automated test suite yet. Treat `npm run build` as the required validation step for every change, and use `npm run server` for manual checks on navigation, search, and rendered Markdown. When editing SEO or injected scripts, confirm the generated HTML in `public/` matches expectations.
